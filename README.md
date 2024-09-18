@@ -1,1 +1,1 @@
-# CombateRPG
+O projeto a seguir, proposto pelo professor Pedro Girotto, faz parte da avaliação do primeiro bimestre do segundo período de Eng. Computação. Desenvolvido por Ana Alice Dias e Yasmin Barata, representando o sistema básico de combate de um jogo do gênero RPG.
