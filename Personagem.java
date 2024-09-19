@@ -32,4 +32,18 @@ public class Personagem { //classe de customização do personagem
         agilidade += pontoAgilidade;
         pontos -= agilidade;
     }
+
+    public void HP (int pontoConstituicao){
+        //rolagem de dados e variável de controle
+        Random random = new Random();
+        int dadoDe6Lados = random.nextInt(5) + 1;
+        
+        for(int control = 0; control < 3; control++){
+            hp += dadoDe6Lados;
+        }
+        System.out.println("HP nos dados: "+hp);
+        hp += pontoConstituicao;
+        System.out.println("HP total: "+hp);
+    }
 }
+
