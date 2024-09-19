@@ -13,14 +13,14 @@ public class Armas {
     int dado12Lados = random.nextInt(11) + 1;
     
     //dano armas leves
-    public double espada (int destreza){
+    public double WarmHug(int destreza){
         danoConstante += 6;
         dano += dado6Lados + dado6Lados + dado4Lados + danoConstante;
         
         return dano;
     }
     
-    public double machadinha(int destreza){
+    public double SunBath (int destreza){
         danoConstante += 6;
         dano += dado6Lados + dado6Lados + dado4Lados + danoConstante;
         
@@ -28,14 +28,14 @@ public class Armas {
     }
     
     //armas pesadas
-    public double lança (int forca){
+    public double SunnyDay(int forca){
         danoConstante += 8;
         dano += danoConstante + dado12Lados + forca*1.5;
         
         return dano;
     }
     
-    public double foice (int forca){
+    public double MorningStar (int forca){
         danoConstante += 10;
         dano += danoConstante + dado12Lados + forca*1.5;
         
