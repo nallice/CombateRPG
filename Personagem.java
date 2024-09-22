@@ -1,49 +1,60 @@
-public class Personagem { //classe de customização do personagem
+import java.util.Random;
 
-    //atributos do personagem
+public class Personagem {
+    // Atributos do personagem
     int forca = 0;
     int destreza = 0;
     int constituicao = 0;
     int agilidade = 0;
-    //ponto de Vida: hp;
+    // Pontos de vida: hp
     int hp = 0;
     String nome;
-    //arma e Armadura
+    // Arma e armadura
     double arma;
     double armadura;
     boolean defesaDupla;
-    
-    public void Forca(int pontoForca){
+    int pontos = 10; // Limite de pontos para distribuir nos atributos
+
+    // Métodos para adicionar atributos
+    public void Forca(int pontoForca) {
         forca += pontoForca;
-        pontos -= forca;
-    }
-    
-    public void Destreza(int pontoDestreza){
-        destreza += pontoDestreza;
-        pontos -= destreza;
-    }
-    
-    public void Constituicao(int pontoConstituicao){
-        constituicao += pontoConstituicao;
-        pontos -= constituicao;
-    }
-    
-    public void Agilidade(int pontoAgilidade){
-        agilidade += pontoAgilidade;
-        pontos -= agilidade;
+        pontos -= pontoForca;
     }
 
-    public void HP (int pontoConstituicao){
-        //rolagem de dados e variável de controle
+    public void Destreza(int pontoDestreza) {
+        destreza += pontoDestreza;
+        pontos -= pontoDestreza;
+    }
+
+    public void Constituicao(int pontoConstituicao) {
+        constituicao += pontoConstituicao;
+        pontos -= pontoConstituicao;
+    }
+
+    public void Agilidade(int pontoAgilidade) {
+        agilidade += pontoAgilidade;
+        pontos -= pontoAgilidade;
+    }
+
+    public void HP(int pontoConstituicao) {
         Random random = new Random();
         int dadoDe6Lados = random.nextInt(5) + 1;
-        
-        for(int control = 0; control < 3; control++){
+
+        for (int control = 0; control < 3; control++) {
             hp += dadoDe6Lados;
         }
-        System.out.println("HP nos dados: "+hp);
+        System.out.println("HP nos dados: " + hp);
         hp += pontoConstituicao;
-        System.out.println("HP total: "+hp);
+        System.out.println("HP total: " + hp);
+    }
+
+    // Método para definir o nome
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    // Método para retornar o nome
+    public String getNome() {
+        return nome;
     }
 }
-
