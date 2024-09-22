@@ -64,10 +64,10 @@ public class main {
         System.out.println("Destreza: " + personagem.destreza);
         System.out.println("Constituição: " + personagem.constituicao);
         System.out.println("Agilidade: " + personagem.agilidade);
+        System.out.format("HP: %d " , personagem.HP(personagem.constituicao));
         System.out.println("Arma selecionada - Dano: " + personagem.arma);
         System.out.println("Armadura selecionada - Defesa: " + personagem.armadura);
         
         scanner.close();
     }
 }
-
