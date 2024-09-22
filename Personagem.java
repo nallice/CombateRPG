@@ -7,7 +7,7 @@ public class Personagem {
     int constituicao = 0;
     int agilidade = 0;
     // Pontos de vida: hp
-    int hp = 0;
+    int hp = 10;
     String nome;
     // Arma e armadura
     double arma;
@@ -36,16 +36,18 @@ public class Personagem {
         pontos -= pontoAgilidade;
     }
 
-    public void HP(int pontoConstituicao) {
+    public int HP(int pontoConstituicao) {
         Random random = new Random();
         int dadoDe6Lados = random.nextInt(5) + 1;
 
         for (int control = 0; control < 3; control++) {
             hp += dadoDe6Lados;
         }
-        System.out.println("HP nos dados: " + hp);
+        // System.out.println("HP nos dados: " + hp);
         hp += pontoConstituicao;
-        System.out.println("HP total: " + hp);
+        // System.out.println("HP total: " + hp);
+
+        return hp;
     }
 
     // Método para definir o nome
@@ -58,3 +60,4 @@ public class Personagem {
         return nome;
     }
 }
+
