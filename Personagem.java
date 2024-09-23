@@ -1,7 +1,6 @@
 import java.util.Random;
 
 public class Personagem {
-    int nivelJogador;
     // Atributos do personagem
     int forca = 0;
     int destreza = 0;
@@ -14,53 +13,58 @@ public class Personagem {
     double arma;
     double armadura;
     boolean defesaDupla;
-    int pontos = 15; // Limite de pontos para distribuir nos atributos
+   static int pontos = 15; // Limite de pontos para distribuir nos atributos fase inicial
 
-    // Métodos para adicionar atributos
-    public void Forca(int pontoForca) {
-        forca += pontoForca;
-        pontos -= pontoForca;
+    // Métodos para adicionar atributos e distribuição de ponto
+    public int getForca() {
+        return forca;
     }
-
-    public void Destreza(int pontoDestreza) {
-        destreza += pontoDestreza;
-        pontos -= pontoDestreza;
+    public void setForca(int forca) {
+        this.forca = forca;
+        pontos-=forca;
     }
-
-    public void Constituicao(int pontoConstituicao) {
-        constituicao += pontoConstituicao;
-        pontos -= pontoConstituicao;
+    public int getDestreza() {
+        return destreza;
     }
-
-    public void Agilidade(int pontoAgilidade) {
-        agilidade += pontoAgilidade;
-        pontos -= pontoAgilidade;
+    public void setDestreza(int destreza) {
+        this.destreza = destreza;
+        pontos-=destreza;
     }
-
-    public void HP (int pontoConstituicao){
-        //Rolagem de dados e variável de controle
-        Random random = new Random();
-        int dadoDe6Lados = random.nextInt(5) + 1;
-        
-        for(int control = 0; control < 3; control++){
-            hp += dadoDe6Lados;
-        }
-        System.out.println("HP nos dados: "+hp);
-        hp += pontoConstituicao;
-        System.out.println("HP total: "+hp);
+    public int getConstituicao() {
+        return constituicao;
     }
-    
-    //Pegar oo Valor da Agilidade
+    public void setConstituicao(int constituicao) {
+        this.constituicao = constituicao;
+        pontos-=constituicao;
+    }
     public int getAgilidade() {
         return agilidade;
     }
-    
-    //Pegar o Valor da Vida
-    public int getHP() {
+    public void setAgilidade(int agilidade) {
+        this.agilidade = agilidade;
+        pontos-=agilidade;  
+    }
+    public void setHP(int pontoConstituicao) {
+        Random random = new Random();
+        int dadoDe6Lados = random.nextInt(5) + 1;
+
+        for (int control = 0; control < 3; control++) {
+            hp += dadoDe6Lados;
+        }
+        // System.out.println("HP nos dados: " + hp);
+        hp += pontoConstituicao;
+        // System.out.println("HP total: " + hp);
+    }
+    public int getHP(){
         return hp;
     }
-    public void Informacoes(){
-        System.out.println("\n\nAqui está as informações de seu personagem: \n");
-        System.out.println("Nome: "+nome+"\nPontos de Vida(HP): "+hp+ "\nForça: "+forca+"\nDestreza: "+destreza+"\nConstituição: "+constituicao+"\nAgilidade: "+agilidade+"\nDano Arma nivel 1: "+arma+"\nArmadura nivel 1: "+armadura);
+    // Método para definir o nome
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-}
+    // Método para retornar o nome
+    public String getNome() {
+        return nome;
+    }
+ }
+
