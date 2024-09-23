@@ -2,14 +2,14 @@ public class Armadura {
     int defesaConstante = 0;
     double defesa = 0;
    
-    public double Basic(int constituicao){ 
+    public double SunFlower(int constituicao){ 
         defesaConstante = 11;
         defesa = defesaConstante + constituicao*1.5;
         
         return defesa;
     }
     
-    public double Standard (int constituicao){
+    public double SundayMorning (int constituicao){
         defesaConstante = 12;
         defesa = defesaConstante + constituicao*1.5;
         
