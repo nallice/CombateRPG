@@ -1,18 +1,22 @@
+package JRPG;
+
 public class Inimigos {
 
     String nome;
     int hp;
-    int dano;
+    int ataque;
     int defesa;
     int agilidade;
+    int armadura;
     // boolean defesaDupla;
 
-    public Inimigos(String nome, int hp, int dano, int defesa, int agilidade){
+    public Inimigos(String nome, int hp, int ataque, int defesa, int agilidade, int armadura){
         this.nome = nome;
         this.hp = hp;
-        this.dano = dano;
+        this.ataque = ataque;
         this.defesa = defesa;
         this.agilidade = agilidade;
+        this.armadura = armadura;
     }
 
     public String getNome() {
@@ -23,8 +27,8 @@ public class Inimigos {
         return hp;
     }
 
-    public int getDano() {
-        return dano;
+    public int getAtaque() {
+        return ataque;
     }
 
     public int getDefesa() {
@@ -35,5 +39,12 @@ public class Inimigos {
         return agilidade;
     }
 
-    
+    public int getArmadura() {
+        return armadura;
+    }
+
+    public void danoRecebido(int danoRecebido){
+        hp -= danoRecebido;
+    }
+
 }
