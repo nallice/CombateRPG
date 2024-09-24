@@ -18,8 +18,9 @@ public class Personagem {
     int ataque=0;
     int dano=0;
     double defesa=0;
-    int defesaDupla=0;
+    boolean defesaDupla;
     boolean defendendo;
+    public int maxHp = 10;
 
     // Métodos para adicionar atributos e distribuição de ponto
     public int getForca() {
@@ -88,11 +89,30 @@ public class Personagem {
     public double getDefesa(){
         return defesa;
     }
+    public double getdefesaDupla(){
+        return defesa;
+    }
     // calculo de dano recebido
     public void danoRecebido(double danoRecebido){
         hp -= danoRecebido;
     }
-
+    public void setdefesaDupla(Armadura armadura){
+        // this.armadura = armadura;
+        defesa = armadura.defesaDupla;       
+    }
+    public void defesaDupla() {
+        this.defesaDupla = true;
+        System.out.println("Você está em modo de defesa. Sua defesa foi duplicada.");
+    }
+    public void usarPocao() {
+        
+        int cura = 7;  // Exemplo de valor de cura
+        hp += cura;
+        if (hp > maxHp) {
+            hp = maxHp;  // Garante que a vida não ultrapasse o máximo
+        }
+        System.out.println("Você recuperou " + cura + " de vida!");
+    }
 double teste = getDefesa();
 
     
