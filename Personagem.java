@@ -10,10 +10,16 @@ public class Personagem {
     int hp = 10;
     String nome;
     // Arma e armadura
-    double arma;
+    int arma;
     double armadura;
-    boolean defesaDupla;
-   static int pontos = 15; // Limite de pontos para distribuir nos atributos fase inicial
+    // Armas arma = new Armas();
+    // Armadura armadura = new Armadura();
+    static int pontos = 15; // Limite de pontos para distribuir nos atributos fase inicial
+    int ataque=0;
+    int dano=0;
+    double defesa=0;
+    int defesaDupla=0;
+    boolean defendendo;
 
     // Métodos para adicionar atributos e distribuição de ponto
     public int getForca() {
@@ -58,13 +64,43 @@ public class Personagem {
     public int getHP(){
         return hp;
     }
-    // Método para definir o nome
+    // Método para nome
     public void setNome(String nome) {
         this.nome = nome;
     }
-    // Método para retornar o nome
     public String getNome() {
         return nome;
     }
+
+    //metodos para ataque
+    public void setAtaque(Armas armas){
+        // this.arma = armas;
+        dano = armas.dano;
+    }
+    public int getAtaque(){
+        return dano;
+    }
+    // metodos para defesa
+    public void setDefesa(Armadura armadura){
+        // this.armadura = armadura;
+        defesa = armadura.defesa;       
+    }
+    public double getDefesa(){
+        return defesa;
+    }
+    // calculo de dano recebido
+    public void danoRecebido(double danoRecebido){
+        hp -= danoRecebido;
+    }
+
+double teste = getDefesa();
+
+    
+    public Personagem(double teste){
+        
+
+    }
+
+
  }
 
