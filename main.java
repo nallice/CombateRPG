@@ -1,4 +1,3 @@
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,8 +12,7 @@ public class main {
         String nome = scanner.nextLine();
         personagem.setNome(nome);
 
-
-       do{
+       if(Personagem.pontos>=0 && Personagem.pontos <=15 ){
             System.out.println("Distribua seus pontos de atributo. Você tem 15 pontos para distribuir.");
             System.out.print("Força: ");
             int forca = scanner.nextInt();
@@ -37,8 +35,15 @@ public class main {
             int agilidade = scanner.nextInt();
             personagem.setAgilidade(agilidade);
             System.out.println("pontos:"+ Personagem.pontos);
-        } while (Personagem.pontos>=0);
-       
+        } 
+        else{
+        System.out.println("Voce ultrapassou o limite de pontos disponível. Reinicie a distribuição!");
+        Clean();
+        }
+        /*while (Personagem.pontos>=0);*/
+        
+
+        
         // Escolher a arma
         Armas armas = new Armas();
         System.out.println("Escolha sua arma:");
