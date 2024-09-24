@@ -4,108 +4,115 @@ import java.util.Scanner;
 public class SistemaBatalhas {
     private Personagem personagem;
     private Inimigos[] inimigos;
-    // private Inimigos[] inimigos2f;
 
-        //Construtor da classe SistemaBatalhas
-        public SistemaBatalhas(Personagem personagem){
-            this.personagem = personagem;
-            Inimigos inimigos[] = new Inimigos[2];
-                inimigos[0]=new Inimigos("Menino Perdido", 40, 16, 3, 2,10);                       
-                inimigos[1]=new Inimigos("Lazuli", 30, 12, 2, 3,10);                       
-                inimigos[2]=new Inimigos("Moony", 50, 20, 4, 1,10);                       
-                 }          
-                
-                public boolean verificacaoBatalha1(){
-                Scanner scanner = new Scanner(System.in);
-                Random random = new Random();
-                int dado3Lados = random.nextInt(2)+0;
-                Texto.Nivel1();
-                System.out.println(dado3Lados);
-                System.out.println(inimigos[dado3Lados]); 
-                System.out.println("Seu inimigo é:"+ inimigos[dado3Lados].getNome());
-                
-                boolean vencedor = batalha(scanner, inimigos[dado3Lados]);
+    // Construtor da classe SistemaBatalhas
+    public SistemaBatalhas(Personagem personagem) {
+        this.personagem = personagem;
+        inimigos = new Inimigos[3];  // Corrigi o tamanho do array
+        inimigos[0] = new Inimigos("Menino Perdido", 40, 16, 3, 2, 10, 10);
+        inimigos[1] = new Inimigos("Lazuli", 30, 12, 2, 3, 10, 10);
+        inimigos[2] = new Inimigos("Moony", 50, 20, 4, 1, 10, 10);
+    }
 
-                if (!vencedor) {
-                    return false;
-                }
-                personagem.hp = hp;//novos pontos de constituição que o usuario escolher;
+    public boolean verificacaoBatalha1() {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        int dado3Lados = random.nextInt(3);  // Corrigi o valor máximo do dado
 
-                }
+        Texto.Nivel1();
+        System.out.println("Resultado do dado: " + dado3Lados);
+        System.out.println("Seu inimigo é: " + inimigos[dado3Lados].getNome());
 
-                public boolean batalha(Scanner scanner, Inimigos inimigo){
-                    while (personagem.getHP() > 0 && inimigo.getHp() > 0) {
+        boolean vencedor = batalha(scanner, inimigos[dado3Lados]);
+
+        if (!vencedor) {
+            return false;
+        }
+
+        // Atribuir novos pontos de vida após a batalha (você pode ajustar como isso deve funcionar)
+        personagem.hp = personagem.getHP(); // Assumindo que 'hp' está sendo modificado corretamente.
+
+        return true;  // Retorne true ou false dependendo do resultado da batalha
+    }
+
+    public boolean batalha(Scanner scanner, Inimigos inimigo) {
+        while (personagem.getHP() > 0 && inimigo.getHp() > 0) {
+            System.out.println("Sua vida: " + personagem.getHP());
+            System.out.println("Vida do inimigo (" + inimigo.getNome() + "): " + inimigo.getHp());
+
+            // Turno do jogador
+            if (turnoJogador(personagem, inimigo, scanner)) {
+                // Verificar se o inimigo ainda está vivo após o ataque
+                if (inimigo.getHp() > 0) {
+                    // Turno do inimigo
+                    Random random = new Random();
+                    int acaoInimigo = random.nextInt(3);  // Ação aleatória do inimigo
+
+                    if (acaoInimigo == 0) {
+                        // Inimigo ataca
+                        System.out.println("O inimigo te atacou com " + inimigo.getAtaque());
+                        double danoRecebidoP = inimigo.getAtaque() - personagem.getDefesa();
+                        personagem.danoRecebido(danoRecebidoP);
                         System.out.println("Sua vida: " + personagem.getHP());
-                        System.out.println(inimigo.getNome() + " vida: " + inimigo.getHp());
-
-                        turno(personagem, inimigo);
-                        if (turno(personagem, inimigo)) {
-                        System.out.println("Escolha sua ação:");
-                        System.out.println("1. Atacar");
-                        System.out.println("2. Fugir");
-                        System.out.println("3. usar porção");
-                        int choice = scanner.nextInt();
-                            if (choice == 1) {
-                                //turno personagem
-                                //personagem ataque
-                                System.out.println("Você atacou o inimgo com:"+ personagem.getAtaque());
-                                int danoRecebidoI = personagem.getAtaque() - inimigo.armadura;
-                                inimigo.danoRecebido(danoRecebidoI);
-                                System.out.println("Vida inimigo:"+ inimigo.getHp());
-
-                                if (inimigo.getHp()>0) {
-                                    //turno inimigo
-                                    Random random = new Random();
-                                    int dado3Lados = random.nextInt(2)+0;
-                                    if (dado3Lados==0) {
-                                        //inimigo ataque
-                                        System.out.println("o inimigo te atacou com"+ inimigo.ataque);
-                                        double danoRecebidoP = inimigo.ataque - personagem.getDefesa();
-                                        personagem.danoRecebido(danoRecebidoP);
-                                        System.out.println("Sua vida:"+ personagem.getHP());
-                                    }
-                                    else if (dado3Lados==1) {
-                                        //defender
-                                        
-                                        
-                                    }
-                                    else if (dado3Lados==2) {
-                                        //usar porção
-                                    }
-                                }
-                            }
-                        } 
-
-
-                        
+                    } else if (acaoInimigo == 1) {
+                        // Inimigo defende
+                        System.out.println("O inimigo está se defendendo.");
+                    } else if (acaoInimigo == 2) {
+                        // Inimigo usa poção
+                        System.out.println("O inimigo usou uma poção e recuperou parte da vida.");
+                        inimigo.recuperarHP(10);  // Exemplo de recuperação de vida
+                        System.out.println("Vida do inimigo: " + inimigo.getHp());
+                    }
+                } else {
+                    System.out.println("Você derrotou " + inimigo.getNome() + "!");
+                    return true;
+                }
             }
         }
-        
-        
-
-        
-            // if (choice == 1) {
-
-            //     inimigo.Dano(player.getAttack());
-            //     System.out.println("Você atacou " + inimigo.getNome() + " por " + player.getAttack() + " de dano.");
-
-            //     if (inimigo.getHp() > 0) {
-            //         player.takeDamage(enemy.getAttack());
-            //         System.out.println(inimigo.getNome() + " te atacou por " + enemy.getAttack() + " de dano.");
-            //     }
-            // } else if (choice == 2) {
-            //     System.out.println("Você fugiu da batalha.");
-            //     return false;
-            // }
-        
-
-        return personagem.getHP() > 0;
-    }
-}
-private boolean turno(Personagem personagem, Inimigos inimigo){
-    if (personagem.agilidade>inimigo.agilidade) {
+        // Se o personagem morrer, o jogo termina
+        if (personagem.getHP() <= 0) {
+            System.out.println("Você foi derrotado.");
+            return false;
+        }
         return true;
-    }else{
-        return false;
+    }
+
+    // Turno do jogador
+    private static boolean turnoJogador(Personagem personagem, Inimigos inimigo, Scanner input) {
+        System.out.println("Este é o seu turno, o que deseja fazer?");
+        System.out.println("1. Atacar");
+        System.out.println("2. Defender");
+        System.out.println("3. Usar poção");
+
+        int escolha = input.nextInt();
+        input.nextLine();  // Limpa o buffer
+
+        switch (escolha) {
+            case 1:
+                // Atacar
+                int danoCausado = Math.max(0, personagem.getAtaque() - inimigo.getDefesa());
+                inimigo.danoRecebido(danoCausado);
+                System.out.println("Você causou " + danoCausado + " de dano em " + inimigo.getNome());
+                break;
+
+            case 2:
+                // Defender
+                personagem.defesaDupla();
+                System.out.println("Você está defendendo. Sua defesa aumentou.");
+                break;
+
+            case 3:
+                // Usar poção
+                personagem.usarPocao();
+                System.out.println("Você usou uma poção e recuperou parte da sua vida.");
+                System.out.println("Sua vida atual: " + personagem.getHP());
+                break;
+
+            default:
+                System.out.println("Ação inválida. Tente novamente.");
+                return false;
+        }
+
+        return true;
     }
 }
