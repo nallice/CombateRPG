@@ -42,38 +42,33 @@ public class Main {
         System.out.print("\nDigite o nome do seu personagem: \n");
         String nome = scanner.nextLine();
         personagem.setNome(nome);
+        while (Personagem.pontos > 0) {
+            System.out.println("Distribua seus pontos de atributo. Você tem " + Personagem.pontos + " pontos para distribuir.");
 
-        do{
-            System.out.println("Distribua seus pontos de atributo. Você tem 15 pontos para distribuir.");
             System.out.print("Força: ");
             int forca = scanner.nextInt();
-            personagem.setForca(forca);
-            System.out.println("pontos:"+ Personagem.pontos);
-    
+
             System.out.print("Destreza: ");
             int destreza = scanner.nextInt();
-            personagem.setDestreza(destreza);
-            System.out.println("pontos:"+ Personagem.pontos);
 
-    
             System.out.print("Constituição: ");
             int constituicao = scanner.nextInt();
-            personagem.setConstituicao(constituicao);
-            System.out.println("pontos:"+ Personagem.pontos);
 
-    
             System.out.print("Agilidade: ");
             int agilidade = scanner.nextInt();
-            personagem.setAgilidade(agilidade);
-            System.out.println("pontos:"+ Personagem.pontos);
-        } while(Personagem.pontos>=0 && personagem.forca + personagem.agilidade + personagem.destreza + personagem.constituicao <= 15);
 
-        if(personagem.forca + personagem.agilidade + personagem.destreza + personagem.constituicao > 15){
-        System.out.println("Voce ultrapassou o limite de pontos disponível. Reinicie a distribuição!");
-        Clean();
-        Thread.sleep(1000);
-        Start();
-        }
+            int totalPontos = forca + destreza + constituicao + agilidade;
+
+            if (totalPontos > Personagem.pontos) {
+                System.out.println("Você ultrapassou o limite de pontos disponível. Tente novamente!");
+                Thread.sleep(1000);
+                Clean();  // Limpar a tela
+                TutorialCustom();
+                Start();
+            }
+
+
+        
         /*while (Personagem.pontos>=0);*/
         
 
@@ -119,7 +114,7 @@ public class Main {
         System.out.println("Armadura selecionada - Defesa: " + personagem.armadura);
     
 
-       scanner.close();
+       scanner.close();}
 
     }
     private static void Clean(){
