@@ -2,10 +2,10 @@ import java.util.Random;
 import java.util.Scanner;
 import java.lang.Thread;
 
-public class main {
-    public static void Main()throws InterruptedException{
+public class Main {
+    public static void main(String [] args)throws InterruptedException{
         Scanner input = new Scanner(System.in);
-        /*Texto texto = new Texto();*/
+        Texto texto = new Texto();
         char choice;
         
         while(true){
@@ -66,7 +66,7 @@ public class main {
             int agilidade = scanner.nextInt();
             personagem.setAgilidade(agilidade);
             System.out.println("pontos:"+ Personagem.pontos);
-        } while(Personagem.pontos>=0);
+        } while(Personagem.pontos>=0 && personagem.forca + personagem.agilidade + personagem.destreza + personagem.constituicao <= 15);
 
         if(personagem.forca + personagem.agilidade + personagem.destreza + personagem.constituicao > 15){
         System.out.println("Voce ultrapassou o limite de pontos disponível. Reinicie a distribuição!");
@@ -120,7 +120,7 @@ public class main {
     
 
        scanner.close();
-        SistemaBatalhas.batalha();
+
     }
     private static void Clean(){
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -137,7 +137,7 @@ public class main {
          System.out.println("Você deve customizar seu personagem! Agora explicarei como funcionara: \nEscolhera seu nome e terá 15 pontos para dividir entre seus atributos, sendo estes: força, destreza, constituiçao, agilidade,\nconstituição, sua força será importante para armas pesadas, sua destreza para armas leves, agilidade para atacar mais rápido \ne sua constituição influenciara na sua vida,voce ira jogar 3d6 para descobrir sua vida e adicionará mais a sua constituição, depois \nescolherá sua arma e armadura, e então estará pronto para o combate.");
     }
     
-    private static void Start() throws InterruptedException {
+    public static void Start() throws InterruptedException {
         Clean();
         System.out.println("\tVamos customizar seu pequeno herói. Pressione 'P' para começar.");
         
