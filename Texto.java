@@ -3,7 +3,7 @@ public class Texto {
     private static void Clean(){
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
-    public void Lore(){
+    public static void Lore(){
         Clean();
         System.out.println(" Há muito tempo, o mundo de Aurelis foi dividido entre dois povos: os Filhos do Sol e os Filhos da Lua. Suas civilizações, separadas por montanhas de fogo e mares gelados, viviam em constante guerra, lutando por crenças antigas que sustentavam a rivalidade entre eles. Os Filhos do Sol acreditavam que o Sol era a fonte da vida e poder, abençoando-os com sua energia. Já os Filhos da Lua reverenciavam a Lua como a guardiã dos mistérios e da sabedoria, sua luz prateada guiando seus passos no mundo. Ambos os povos estavam convencidos de que a outra tribo era a culpada por suas misérias e que sua destruição garantiria a supremacia. No entanto, o que nenhum deles sabia é que, no início dos tempos, eram todos uma única raça. Foram divididos por um inimigo comum, uma força sombria que operava nas sombras, manipulando-os como peças em um jogo cruel. O Vulto Eterno manipulou as mentes dos líderes da antiga civilização, plantando a semente da desconfiança entre os povos, até que as lutas fratricidas os separassem para sempre. A guerra entre os Filhos do Sol e os Filhos da Lua era, na verdade, uma farsa perpetuada por esse inimigo, que se escondia nas sombras e prosperava na divisão.");
     }
@@ -104,7 +104,7 @@ System.out.println("         `---'`   `'----'`");
 System.out.println("Parabéns, pequeno guerreiro, você chegou à fase final de sua batalha! Derrote Vulto Eterno para vingar sua nação e coroar sua jornada.Você recebeu mais 10 pontos para acrescentar aos seus atributos. Faça-o com sabedoria!");
     }
 
-    public static void Lose(){
+    public static void Lose() throws InterruptedException{
         Clean();
 System.out.println(".         _  .          .          .    +     .          .          .      .\n");
 System.out.println(".(_)          .     +      .            .            .       :\n");
@@ -126,7 +126,7 @@ System.out.println(".'                                                          
 
 System.out.println("Você morreu! Bem-vindo ao Lado Sombrio da Lua");
 System.out.println("Para voltar ao MENU, pressione 'M'");
-
+Reinicie();
     }
 
     public static void Win(){
@@ -143,11 +143,12 @@ System.out.println("~  ~       ~ ~      ~         VOCÊ VENCEU!  ~      ~~  ~   
 System.out.println("      ~             ~        ~      ~      ~~   ~             ~");
 System.out.println("Parabéns, pequeno guerreiro, você concluiu bravamente a sua missão e defendeu a Tribo do Sol das garras do Vulto Eterno.\n ");
     }
-private static void Reinicie(){
-    char MENU;
+private static void Reinicie() throws InterruptedException{
+
+    char MENU = 'M';
 switch (MENU) {
     case 'M', 'm':
-        Main();
+    Main.Start();
         break;
 
     default:
