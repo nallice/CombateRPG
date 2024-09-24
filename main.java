@@ -1,18 +1,49 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.lang.Thread;
 
 public class main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public static void Main()throws InterruptedException{
+        Scanner input = new Scanner(System.in);
+        /*Texto texto = new Texto();*/
+        char choice;
+        
+        while(true){
+            System.out.println("\t1- Jogar\n\t2- Plot\n\t3- Sair");
+            choice = input.next().charAt(0);
+            //Limpar buffer do teclado
+            input.nextLine();
+            
+            switch(choice){
+                case '1':
+                   Start();
+                break;
+                
+                case '2':
+                    Texto.Lore();
+                break;
 
+                case '3':
+                    System.exit(0);
+                break;
+                
+                default:
+                    System.out.println("Valor inválido");
+                break;
+            }
+        } 
+    }
+    private static void Customizacao() throws InterruptedException {
+        Scanner scanner = new Scanner(System.in);
+        
         Personagem personagem = new Personagem();
         System.out.println("Bem-vindo ao jogo! Crie seu personagem.");
-
-        System.out.print("Digite o nome do seu personagem: ");
+        TutorialCustom();
+        System.out.print("\nDigite o nome do seu personagem: \n");
         String nome = scanner.nextLine();
         personagem.setNome(nome);
 
-       if(Personagem.pontos>=0 && Personagem.pontos <=15 ){
+        do{
             System.out.println("Distribua seus pontos de atributo. Você tem 15 pontos para distribuir.");
             System.out.print("Força: ");
             int forca = scanner.nextInt();
@@ -35,10 +66,13 @@ public class main {
             int agilidade = scanner.nextInt();
             personagem.setAgilidade(agilidade);
             System.out.println("pontos:"+ Personagem.pontos);
-        } 
-        else{
+        } while(Personagem.pontos>=0);
+
+        if(personagem.forca + personagem.agilidade + personagem.destreza + personagem.constituicao > 15){
         System.out.println("Voce ultrapassou o limite de pontos disponível. Reinicie a distribuição!");
         Clean();
+        Thread.sleep(1000);
+        Start();
         }
         /*while (Personagem.pontos>=0);*/
         
@@ -86,6 +120,44 @@ public class main {
     
 
        scanner.close();
+        SistemaBatalhas.batalha();
+    }
+    private static void Clean(){
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
+    }
+    /*private static void Lore(){
+        Clean();
+        System.out.println(" Há muito tempo, o mundo de Aurelis foi dividido entre dois povos: os Filhos do Sol e os Filhos da Lua. Suas civilizações, separadas por montanhas de fogo e mares gelados, viviam em constante guerra, lutando por crenças antigas que sustentavam a rivalidade entre eles. Os Filhos do Sol acreditavam que o Sol era a fonte da vida e poder, abençoando-os com sua energia. Já os Filhos da Lua reverenciavam a Lua como a guardiã dos mistérios e da sabedoria, sua luz prateada guiando seus passos no mundo. Ambos os povos estavam convencidos de que a outra tribo era a culpada por suas misérias e que sua destruição garantiria a supremacia. No entanto, o que nenhum deles sabia é que, no início dos tempos, eram todos uma única raça. Foram divididos por um inimigo comum, uma força sombria que operava nas sombras, manipulando-os como peças em um jogo cruel. O Vulto Eterno manipulou as mentes dos líderes da antiga civilização, plantando a semente da desconfiança entre os povos, até que as lutas fratricidas os separassem para sempre. A guerra entre os Filhos do Sol e os Filhos da Lua era, na verdade, uma farsa perpetuada por esse inimigo, que se escondia nas sombras e prosperava na divisão.");
+    }*/
+    
+    //Funções de tutoriais
+    private static void TutorialCustom(){
+        Clean();
+         System.out.println("Você deve customizar seu personagem! Agora explicarei como funcionara: \nEscolhera seu nome e terá 15 pontos para dividir entre seus atributos, sendo estes: força, destreza, constituiçao, agilidade,\nconstituição, sua força será importante para armas pesadas, sua destreza para armas leves, agilidade para atacar mais rápido \ne sua constituição influenciara na sua vida,voce ira jogar 3d6 para descobrir sua vida e adicionará mais a sua constituição, depois \nescolherá sua arma e armadura, e então estará pronto para o combate.");
+    }
+    
+    private static void Start() throws InterruptedException {
+        Clean();
+        System.out.println("\tVamos customizar seu pequeno herói. Pressione 'P' para começar.");
+        
+        Scanner input = new Scanner(System.in);
+        char choice;
+        
+        while(true){
+            choice = input.next().charAt(0);
+            input.nextLine();
+            
+            switch(choice){
+                    case 'P', 'p':
+                        Customizacao();
+                    break;
+
+                    default:
+                        System.out.println("Tecla inválida");
+                    break;
+            }
+        }
+        
     }
 }
