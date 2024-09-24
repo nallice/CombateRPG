@@ -96,11 +96,10 @@ public class Personagem {
 double teste = getDefesa();
 
     
-    public Personagem(double teste){
+    public void Personagem(double teste){
         
 
     }
 
 
  }
-
