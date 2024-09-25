@@ -1,5 +1,3 @@
-package JRPG;
-
 import java.util.Random;
 
 public class Armas {
@@ -22,12 +20,7 @@ public class Armas {
         return dano;
     }
     
-    public int SunBath (int destreza){
-        danoConstante += 6;
-        dano += dado6Lados + dado6Lados + dado4Lados + danoConstante;
-        
-        return dano;
-    }
+
     
     //armas pesadas
     public int SunnyDay(int forca){
@@ -37,10 +30,22 @@ public class Armas {
         return dano;
     }
     
-    public int MorningStar (int forca){
-        danoConstante += 10;
-        dano += danoConstante + dado12Lados + forca*1.5;
+    // armas premiacao 1
+    public int SunBath (int forca){
+        danoConstante += 13;
+        dano += dado6Lados + dado6Lados + dado4Lados + danoConstante + forca*1.8;
+        
+        return dano;
+}
+    public int TanningSword (int forca){
+        danoConstante += 15;
+        dano += danoConstante + dado12Lados + forca*1.8;
         
         return dano;
     }
+public int MorningStar (int forca){
+    danoConstante += 18;
+    dano += danoConstante + dado12Lados + forca*2;
+    
+    return dano;}
 }
