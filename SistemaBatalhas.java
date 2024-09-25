@@ -9,9 +9,9 @@ public class SistemaBatalhas {
 
     // Construtor da classe SistemaBatalhas
     // public SistemaBatalhas(Personagem personagem) {
-    //     this.personagem = personagem;
-    //     
-    //     // 
+    // this.personagem = personagem;
+    //
+    // //
     // }
     private static boolean batalha(Personagem personagem, Inimigos inimigo) {
         Scanner scanner = new Scanner(System.in);
@@ -47,6 +47,10 @@ public class SistemaBatalhas {
                     return true;
                 }
             }
+
+            if (personagem.getHP() <= 0) {
+                break;
+            }
         }
         // Se o personagem morrer, o jogo termina
         if (personagem.getHP() <= 0) {
@@ -71,7 +75,7 @@ public class SistemaBatalhas {
         switch (escolha) {
             case 1:
                 // Atacar
-                int danoCausado = Math.max(0, personagem.getAtaque() - inimigo.getDefesa());
+                int danoCausado = Math.max(10, personagem.getAtaque() - inimigo.getDefesa());
                 inimigo.danoRecebido(danoCausado);
                 System.out.println("Você causou " + danoCausado + " de dano em " + inimigo.getNome());
                 break;
@@ -113,15 +117,18 @@ public class SistemaBatalhas {
         System.out.println("Seu inimigo é: " + inimigos[dado3Lados].getNome());
 
         boolean vencedor = batalha(personagem, inimigos[dado3Lados]);
-       /*  if(vencedor){
-            Main.Premiacao1();
-        }
-        else{
-            Texto.Lose();
-        }*/
+        /*
+         * if(vencedor){
+         * Main.Premiacao1();
+         * }
+         * else{
+         * Texto.Lose();
+         * }
+         */
 
         // // Atribuir novos pontos de vida após a batalha
-        // personagem.hp = personagem.getHP(); // Assumindo que 'hp' está sendo modificado corretamente.
+        // personagem.hp = personagem.getHP(); // Assumindo que 'hp' está sendo
+        // modificado corretamente.
         return vencedor;
     }
 
@@ -139,10 +146,9 @@ public class SistemaBatalhas {
 
         boolean vencedor = batalha(personagem, inimigos[dado2Lados]);
 
-        if(vencedor){
+        if (vencedor) {
             Main.Premiacao2();
-        }
-        else{
+        } else {
             Texto.Lose();
         }
 
@@ -158,71 +164,64 @@ public class SistemaBatalhas {
         System.out.println("Seu inimigo é: " + vultoEterno.getNome());
 
         boolean vencedor = batalha(personagem, vultoEterno);
-        if(vencedor){
+        if (vencedor) {
             Texto.Win();
-        }
-        else{
+        } else {
             Texto.Lose();
         }
         return vencedor;
     }
 
+    // public void subirNivel(int nivel){
+    // Personagem personagem = new Personagem();
+    // Scanner scanner = new Scanner(System.in);
+    // int pontosAtributos = nivel * 5;
 
-    //   public void subirNivel(int nivel){
-    //     Personagem personagem = new Personagem();
-    //     Scanner scanner = new Scanner(System.in);
-    //     int pontosAtributos = nivel * 5;
-        
-    //     boolean verify = true;
+    // boolean verify = true;
 
-    //     while (verify){
+    // while (verify){
 
-    //         System.out.println("Pontos Restantes: " + pontosAtributos);
+    // System.out.println("Pontos Restantes: " + pontosAtributos);
 
-    //         System.out.print("Força: ");
-    //         int forca1 = scanner.nextInt();
-    //         personagem.setForca(personagem.getForca()+forca1);
-    //         scanner.nextLine();
-                     
+    // System.out.print("Força: ");
+    // int forca1 = scanner.nextInt();
+    // personagem.setForca(personagem.getForca()+forca1);
+    // scanner.nextLine();
 
-    //         System.out.println("Pontos Restantes: " + pontosAtributos);
+    // System.out.println("Pontos Restantes: " + pontosAtributos);
 
-    //         System.out.print("Destreza: ");
-    //         int destreza1 = scanner.nextInt();
-    //         personagem.setDestreza(personagem.getDestreza()+destreza1);
-    //         scanner.nextLine();
-            
-    //         System.out.println("Pontos Restantes: " + personagem.pontos);
+    // System.out.print("Destreza: ");
+    // int destreza1 = scanner.nextInt();
+    // personagem.setDestreza(personagem.getDestreza()+destreza1);
+    // scanner.nextLine();
 
-    //         System.out.print("Constituição: ");
-    //         int constituicao1 = scanner.nextInt();
-    //         personagem.setConstituicao(personagem.getConstituicao()+constituicao1);
-    //         scanner.nextLine();
-            
-    //         System.out.println("Pontos Restantes: " + personagem.pontos);
-    //         System.out.print("Agilidade: ");
-    //         int agilidade1 = scanner.nextInt();
-    //         personagem.setAgilidade(personagem.getAgilidade()+agilidade1);
-    //         scanner.nextLine();
-            
+    // System.out.println("Pontos Restantes: " + personagem.pontos);
 
-    //         System.out.println("Pontos Restantes: " + pontosAtributos);
+    // System.out.print("Constituição: ");
+    // int constituicao1 = scanner.nextInt();
+    // personagem.setConstituicao(personagem.getConstituicao()+constituicao1);
+    // scanner.nextLine();
 
-    
-            
-    //         if ( personagem.pontos < 0 ) {
-    //             System.out.println(personagem.pontos);
-    //             System.out.println("Você ultrapassou o limite de pontos disponível. Tente novamente!");
+    // System.out.println("Pontos Restantes: " + personagem.pontos);
+    // System.out.print("Agilidade: ");
+    // int agilidade1 = scanner.nextInt();
+    // personagem.setAgilidade(personagem.getAgilidade()+agilidade1);
+    // scanner.nextLine();
 
-    //         } else {
-    //             verify = false;
-    //         }
-    //     }  
+    // System.out.println("Pontos Restantes: " + pontosAtributos);
 
+    // if ( personagem.pontos < 0 ) {
+    // System.out.println(personagem.pontos);
+    // System.out.println("Você ultrapassou o limite de pontos disponível. Tente
+    // novamente!");
 
-    //     int hp = personagem.pontos + personagem.getConstituicao();
-
+    // } else {
+    // verify = false;
+    // }
     // }
 
+    // int hp = personagem.pontos + personagem.getConstituicao();
+
+    // }
 
 }
