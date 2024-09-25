@@ -1,4 +1,3 @@
-
 public class Inimigos {
 
     String nome;
@@ -7,7 +6,7 @@ public class Inimigos {
     int defesa;
     int agilidade;
     int armadura;
-    int maxHp = 10;
+    int maxHp = hp;
     // boolean defesaDupla;
 
     public Inimigos(String nome, int hp, int ataque, int defesa, int agilidade, int armadura, int maxHp){
